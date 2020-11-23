@@ -6,6 +6,7 @@ print("\n\n\n\n\n-------Choose from the list of Equations---------\n")
 print("---Investment---")
 print("1: Simple Interest")
 print("2: Compound Interest")
+
 print("3: Continuously Compounded Interest")
 print("4: Time to Double an Investment (Real, not rule of 72)")
 print("5: Present Value of an Ordinary Annuity")
@@ -14,6 +15,7 @@ print("7: Compound Annual Growth Rate")
 print("8: Expected Return of a Portfolio")
 print("9: Inflation Adjusted Return")
 print("10: Percent Gain/Loss on Investment")
+print("26: Continously Compounded Interest Making Yearly Contributions")
 
 print("\n---Debt---")
 print("11: Amortization")
@@ -131,6 +133,27 @@ def percentGainOrLoss():
     PP = float(input("Purchase Price: "))
     P = (MP - PP)/PP * 100
     print("\nPercent Gain/Loss: " + str(P) + "%")
+
+
+def continouslyCompoundedInterestMakingYearlyContrabutions():
+    print("Continuously Compounded Interest: A = P*e^rt\n")
+    time = float(input("Number of yearly contributions after initial payment: "))
+
+
+
+    principle = float(input("Initial Principle: "))
+    rate = float(input("Initial Rate: "))
+    a = principle * pow(math.e, rate * time)
+
+    principle = float(input("Amount contributed per year after initial payment: "))
+    rate = float(input("Rate for investments after initial payment: "))
+    for i in range(1, int(time + 1)):
+        year = principle * pow(math.e, rate * i)
+        a = a + year
+    print("Future Value : $" + str(a))
+
+
+
 
 def amortization():
     print("Amortization: Monthly Payment = (P * (r/n)) / (1 - (1 + r/n)^-nt)\n")
@@ -315,6 +338,8 @@ def chooseFunc(numSelected):        # Runs function of inputted equation number
         grossRentMultiplier()
     if numSelected == 25:
         debtServiceCoverageRatio()
+    if numSelected == 26:
+        continouslyCompoundedInterestMakingYearlyContrabutions()
 
 
 chooseFunc(numberSelected)      # Initial Start
